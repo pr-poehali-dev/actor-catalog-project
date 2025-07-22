@@ -78,189 +78,171 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-600/10"></div>
-        <div className="relative px-6 py-20 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <Icon name="Camera" size={48} className="text-yellow-400 mr-4" />
-              <h1 className="text-6xl font-bold bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
-                ACTORS CATALOG
-              </h1>
-            </div>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Откройте для себя талантливых актёров для вашего следующего проекта. 
-              Профессиональные портфолио в стиле голливудских постеров.
-            </p>
-          </div>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="bg-black text-white py-8">
+        <div className="max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl font-light tracking-wider text-center">
+            ACTORS CATALOG
+          </h1>
+        </div>
+      </div>
 
-          {/* Search and Filters */}
-          <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-yellow-400/20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-              <div className="lg:col-span-2">
-                <Input
-                  placeholder="Поиск по имени актёра..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-800/50 border-yellow-400/30 text-white placeholder-gray-400 focus:border-yellow-400"
-                />
-              </div>
-              
-              <Select value={ageFilter} onValueChange={setAgeFilter}>
-                <SelectTrigger className="bg-gray-800/50 border-yellow-400/30 text-white">
-                  <SelectValue placeholder="Возраст" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="20-30">20-30 лет</SelectItem>
-                  <SelectItem value="30-40">30-40 лет</SelectItem>
-                  <SelectItem value="40+">40+ лет</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={experienceFilter} onValueChange={setExperienceFilter}>
-                <SelectTrigger className="bg-gray-800/50 border-yellow-400/30 text-white">
-                  <SelectValue placeholder="Опыт" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="начинающий">Начинающий (до 3 лет)</SelectItem>
-                  <SelectItem value="опытный">Опытный (3-10 лет)</SelectItem>
-                  <SelectItem value="мастер">Мастер (10+ лет)</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={genreFilter} onValueChange={setGenreFilter}>
-                <SelectTrigger className="bg-gray-800/50 border-yellow-400/30 text-white">
-                  <SelectValue placeholder="Жанр" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="драма">Драма</SelectItem>
-                  <SelectItem value="комедия">Комедия</SelectItem>
-                  <SelectItem value="боевик">Боевик</SelectItem>
-                  <SelectItem value="триллер">Триллер</SelectItem>
-                  <SelectItem value="романтика">Романтика</SelectItem>
-                </SelectContent>
-              </Select>
+      {/* Filters */}
+      <div className="bg-gray-50 border-b border-gray-200 py-8">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+            <div className="lg:col-span-2">
+              <Input
+                placeholder="Поиск актёров..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border-gray-300 focus:border-black focus:ring-0"
+              />
             </div>
             
-            <div className="flex gap-4">
-              <Button 
-                onClick={handleFilter}
-                className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-semibold hover:from-yellow-300 hover:to-amber-400 flex-1 md:flex-none"
-              >
-                <Icon name="Search" size={20} className="mr-2" />
-                Найти актёров
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => {
-                  setSearchTerm('');
-                  setAgeFilter('');
-                  setExperienceFilter('');
-                  setGenreFilter('');
-                  setFilteredActors(mockActors);
-                }}
-                className="border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/10"
-              >
-                Сбросить
-              </Button>
-            </div>
+            <Select value={ageFilter} onValueChange={setAgeFilter}>
+              <SelectTrigger className="border-gray-300 focus:border-black focus:ring-0">
+                <SelectValue placeholder="Возраст" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="20-30">20-30 лет</SelectItem>
+                <SelectItem value="30-40">30-40 лет</SelectItem>
+                <SelectItem value="40+">40+ лет</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={experienceFilter} onValueChange={setExperienceFilter}>
+              <SelectTrigger className="border-gray-300 focus:border-black focus:ring-0">
+                <SelectValue placeholder="Опыт" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="начинающий">Начинающий (до 3 лет)</SelectItem>
+                <SelectItem value="опытный">Опытный (3-10 лет)</SelectItem>
+                <SelectItem value="мастер">Мастер (10+ лет)</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={genreFilter} onValueChange={setGenreFilter}>
+              <SelectTrigger className="border-gray-300 focus:border-black focus:ring-0">
+                <SelectValue placeholder="Жанр" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="драма">Драма</SelectItem>
+                <SelectItem value="комедия">Комедия</SelectItem>
+                <SelectItem value="боевик">Боевик</SelectItem>
+                <SelectItem value="триллер">Триллер</SelectItem>
+                <SelectItem value="романтика">Романтика</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="flex gap-3">
+            <Button 
+              onClick={handleFilter}
+              className="bg-black text-white hover:bg-gray-800 px-6"
+            >
+              <Icon name="Search" size={18} className="mr-2" />
+              Найти
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                setSearchTerm('');
+                setAgeFilter('');
+                setExperienceFilter('');
+                setGenreFilter('');
+                setFilteredActors(mockActors);
+              }}
+              className="border-gray-300 text-gray-600 hover:bg-gray-50"
+            >
+              Сбросить
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Actors Grid */}
-      <div className="px-6 py-16 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl font-bold text-yellow-400">Наши таланты</h2>
-          <div className="text-gray-400">
-            Найдено: <span className="text-yellow-400 font-semibold">{filteredActors.length}</span> актёров
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between mb-8">
+            <div className="text-gray-600 text-sm">
+              {filteredActors.length} актёров найдено
+            </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredActors.map((actor) => (
-            <Card key={actor.id} className="bg-gradient-to-b from-gray-800 to-gray-900 border-yellow-400/20 overflow-hidden hover:scale-105 transition-all duration-300 hover:border-yellow-400/50">
-              <div className="relative group">
-                <img 
-                  src={actor.image} 
-                  alt={actor.name}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute top-4 right-4">
-                  <div className="flex items-center bg-yellow-400 text-black px-2 py-1 rounded-full text-sm font-semibold">
-                    <Icon name="Star" size={16} className="mr-1 fill-current" />
-                    {actor.rating}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredActors.map((actor) => (
+              <Card key={actor.id} className="border-0 shadow-none hover:shadow-lg transition-all duration-300 group">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={actor.image} 
+                    alt={actor.name}
+                    className="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  <div className="absolute top-3 right-3">
+                    <div className="bg-black text-white px-2 py-1 text-xs font-medium rounded">
+                      ⭐ {actor.rating}
+                    </div>
                   </div>
-                </div>
-              </div>
-              
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{actor.name}</h3>
-                <div className="flex items-center text-gray-400 mb-4 space-x-4">
-                  <span className="flex items-center">
-                    <Icon name="Calendar" size={16} className="mr-1" />
-                    {actor.age} лет
-                  </span>
-                  <span className="flex items-center">
-                    <Icon name="Clock" size={16} className="mr-1" />
-                    {actor.experience}
-                  </span>
                 </div>
                 
-                <div className="mb-4">
-                  <p className="text-gray-400 text-sm mb-2">Жанры:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {actor.genres.map((genre, index) => (
-                      <Badge key={index} variant="outline" className="border-yellow-400/30 text-yellow-400">
-                        {genre}
-                      </Badge>
-                    ))}
+                <CardContent className="p-5">
+                  <h3 className="font-semibold text-lg text-black mb-2">{actor.name}</h3>
+                  
+                  <div className="flex items-center text-gray-500 text-sm mb-3 space-x-4">
+                    <span>{actor.age} лет</span>
+                    <span>•</span>
+                    <span>{actor.experience}</span>
                   </div>
-                </div>
-
-                <div className="mb-6">
-                  <p className="text-gray-400 text-sm mb-2">Фильмография:</p>
-                  <div className="text-sm text-gray-300">
-                    {actor.filmography.slice(0, 2).join(', ')}
-                    {actor.filmography.length > 2 && ` и ещё ${actor.filmography.length - 2}`}
+                  
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-1">
+                      {actor.genres.slice(0, 2).map((genre, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs bg-gray-100 text-gray-700 border-0">
+                          {genre}
+                        </Badge>
+                      ))}
+                      {actor.genres.length > 2 && (
+                        <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-700 border-0">
+                          +{actor.genres.length - 2}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex gap-2">
-                  <Button className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-semibold hover:from-yellow-300 hover:to-amber-400 flex-1">
-                    Портфолио
-                  </Button>
-                  <Button variant="outline" className="border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/10">
-                    <Icon name="Heart" size={16} />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                  <div className="mb-4">
+                    <p className="text-gray-500 text-xs mb-1">Фильмография:</p>
+                    <p className="text-sm text-gray-700 line-clamp-2">
+                      {actor.filmography.slice(0, 2).join(', ')}
+                      {actor.filmography.length > 2 && ` и ещё ${actor.filmography.length - 2}`}
+                    </p>
+                  </div>
 
-        {filteredActors.length === 0 && (
-          <div className="text-center py-16">
-            <Icon name="Search" size={64} className="mx-auto text-gray-600 mb-4" />
-            <h3 className="text-xl text-gray-400 mb-2">Актёры не найдены</h3>
-            <p className="text-gray-500">Попробуйте изменить параметры поиска</p>
+                  <div className="flex gap-2">
+                    <Button size="sm" className="bg-black text-white hover:bg-gray-800 flex-1 text-xs">
+                      Портфолио
+                    </Button>
+                    <Button size="sm" variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+                      <Icon name="Heart" size={14} />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        )}
+
+          {filteredActors.length === 0 && (
+            <div className="text-center py-16">
+              <div className="text-gray-400 mb-4">
+                <Icon name="Search" size={48} className="mx-auto mb-3" />
+                <h3 className="text-lg font-medium text-gray-600">Актёры не найдены</h3>
+                <p className="text-sm text-gray-500 mt-2">Попробуйте изменить параметры поиска</p>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-black/40 border-t border-yellow-400/20 py-12">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <Icon name="Film" size={32} className="text-yellow-400 mr-3" />
-            <span className="text-2xl font-bold text-yellow-400">ACTORS CATALOG</span>
-          </div>
-          <p className="text-gray-400">Профессиональные актёры для вашего проекта</p>
-        </div>
-      </footer>
     </div>
   );
 };
